@@ -1,0 +1,1 @@
+^((?:https?:)?\/\/)?((?:www|m)\.)?((?:doomsdayclient.com|vape.gg))(\/?)(\S+)?$ -- search for specific domains
