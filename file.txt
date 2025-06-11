@@ -1,5 +1,8 @@
-^([a-zA-Z]:\\)?([^\\/:*?"<>|]+\\)*[^\\/:*?"<>|]+$ -- windows file path
-^([cC]:\\)?([^\\/:*?"<>|]+\\)*[^\\/:*?"<>|]+$ -- windows file path with specific drive (for dumbs)
-^\/(([A-z0-9\-\%]+\/)*[(A-z0-9\-\%)|/]+$)? -- linux file path
+([a-zA-Z]:\\)?([^\\/:*?"<>|]+\\)*[^\\/:*?"<>|]+ -- windows file path to file
+([cC]:\\)?([^\\/:*?"<>|]+\\)*[^\\/:*?"<>|]+ -- windows file path to file with specific drive (for dumbs)
+([a-zA-Z]:\\)?([^\\/:*?"<>|]+\\)*[^/:*?"<>|]*[.(jar|exe|dll)]+ -- windows file path with specific file extension
 
-^.*\.(exe|dll|jar)$ -- specific file extension 
+\/(?:[a-zA-Z0-9._-]+\/?)* -- linux file path
+\/home\/(?:[a-zA-Z0-9._-]+\/?)* -- linux file path with specific main folder
+
+\w*(.(jar|exe|dll)) -- specific file extension 
