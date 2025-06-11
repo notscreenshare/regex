@@ -43,7 +43,7 @@ We'd welcome any pull requests.
 | Pattern | Description | Example |
 |---------|-------------|---------|
 | `^` | Start of string/line | `^DoomsDay` matches "DoomsDay is a multifunctional modification..." |
-| `$` | End of string/line | `world$` matches "doomsday$" |
+| `$` | End of string/line | `day$` matches "doomsday" |
 | `\b` | Word boundary | `\bdoomsday\b` matches "doomsday" not "category" |
 | `\B` | Non-word boundary | `\Bdoomsday\B` matches "doomsday" in "concatenate" |
 
