@@ -5,87 +5,95 @@
     </picture>
 </h1>
 <p align="center">
-  <em>We created regex database for forensic.</em>
+  <em>Таблица Regex для форезнии (цифровой криминалистики).</em>
 </p>
 
-## ⚠️ In development
-We'd welcome any pull requests.
+## ⚠️ В разработке
+
+Мы будем рады любым Pull Request.
 
 ---
 
-# Basic Cheatsheet
+# Базовая шпаргалка
 
-## Character Classes
-| Pattern | Description | Example |
-|---------|-------------|---------|
-| `.` | Any character except newline | `d.y` matches "doomsday", "dripsday" |
-| `\d` | Any digit (0-9) | `\d{3}` matches "123" |
-| `\D` | Any non-digit | `\D+` matches "abc" |
-| `\w` | Word character (a-z, A-Z, 0-9, _) | `\w+` matches "doomsday_123" |
-| `\W` | Non-word character | `\W` matches "@", " " |
-| `\s` | Whitespace (space, tab, newline) | `\s+` matches "   " |
-| `\S` | Non-whitespace | `\S+` matches "doomsday" |
-| `[abc]` | Any character in brackets | `[aeiou]` matches vowels |
-| `[^abc]` | Any character NOT in brackets | `[^0-9]` matches non-digits |
-| `[a-z]` | Character range | `[a-zA-Z]` matches letters |
+## Символьные классы
 
-## Quantifiers
-| Pattern | Description | Example |
-|---------|-------------|---------|
-| `*` | 0 or more | `do*msday` matches "dmsday", "domsday", "doomsday" |
-| `+` | 1 or more | `do+msday` matches "domsday", "doomsday"|
-| `?` | 0 or 1 (optional) | `colou?r` matches "color", "colour" |
-| `{n}` | Exactly n times | `\d{3}` matches exactly 3 digits |
-| `{n,}` | n or more times | `\d{3,}` matches 3+ digits |
-| `{n,m}` | Between n and m times | `\d{2,4}` matches 2-4 digits |
+| Шаблон | Описание | Пример |
+| --- | --- | --- |
+| `.` | Любой символ, кроме новой строки | `д.нь` соответствует "день", "дань" |
+| `\d` | Любая цифра (0-9) | `\d{3}` соответствует "123" |
+| `\D` | Любой нецифровой символ | `\D+` соответствует "абв" |
+| `\w` | Буквенно-цифровой символ (a-z, A-Z, 0-9, _) | `\w+` соответствует "doomsday_123" |
+| `\W` | Не буквенно-цифровой символ | `\W` соответствует "@", " " |
+| `\s` | Пробельный символ (пробел, табуляция, новая строка) | `\s+` соответствует "    " |
+| `\S` | Непробельный символ | `\S+` соответствует "doomsday" |
+| `[abc]` | Любой символ из указанных в скобках | `[аеиоу]` соответствует гласным |
+| `[^abc]` | Любой символ, КРОМЕ указанных в скобках | `[^0-9]` соответствует нецифровым символам |
+| `[a-z]` | Диапазон символов | `[а-яА-Я]` соответствует кириллическим буквам |
 
-## Anchors
-| Pattern | Description | Example |
-|---------|-------------|---------|
-| `^` | Start of string/line | `^DoomsDay` matches "DoomsDay is a multifunctional modification..." |
-| `$` | End of string/line | `day$` matches "doomsday" |
-| `\b` | Word boundary | `\bdoomsday\b` matches "doomsday" not "category" |
-| `\B` | Non-word boundary | `\Bdoomsday\B` matches "doomsday" in "concatenate" |
+## Квантификаторы
 
-## Groups and Alternation
-| Pattern | Description | Example |
-|---------|-------------|---------|
-| `(abc)` | Capturing group | `(ha)+` matches "hahaha" |
-| `(?:abc)` | Non-capturing group | `(?:ha)+` matches without capturing |
-| `a\|b` | Alternation (OR) | `doomsday\|dripsday` matches "doomsday" or "dripsday" |
-| `\1` | Backreference to group 1 | `(.)\\1` matches doubled chars "aa" |
+| Шаблон | Описание | Пример |
+| --- | --- | --- |
+| `*` | 0 или более | `do*msday` соответствует "dmsday", "domsday", "doomsday" |
+| `+` | 1 или более | `do+msday` соответствует "domsday", "doomsday" |
+| `?` | 0 или 1 (необязательный) | `colou?r` соответствует "color", "colour" |
+| `{n}` | Ровно n раз | `\d{3}` соответствует ровно 3 цифрам |
+| `{n,}` | n или более раз | `\d{3,}` соответствует 3 и более цифрам |
+| `{n,m}` | От n до m раз | `\d{2,4}` соответствует от 2 до 4 цифрам |
 
-## Special Characters (Need Escaping)
-| Character | Escaped | Description |
-|-----------|---------|-------------|
-| `.` | `\.` | Literal dot |
-| `*` | `\*` | Literal asterisk |
-| `+` | `\+` | Literal plus |
-| `?` | `\?` | Literal question mark |
-| `^` | `\^` | Literal caret |
-| `$` | `\$` | Literal dollar |
-| `(` `)` | `\(` `\)` | Literal parentheses |
-| `[` `]` | `\[` `\]` | Literal square brackets |
-| `{` `}` | `\{` `\}` | Literal curly braces |
-| `\|` | `\\|` | Literal pipe |
-| `\` | `\\` | Literal backslash |
+## Якоря
 
-## Lookahead and Lookbehind
-| Pattern | Description | Example |
-|---------|-------------|---------|
-| `(?=...)` | Positive lookahead | `\d(?=px)` matches digits before "px" |
-| `(?!...)` | Negative lookahead | `\d(?!px)` matches digits NOT before "px" |
-| `(?<=...)` | Positive lookbehind | `(?<=\$)\d+` matches digits after "$" |
-| `(?<!...)` | Negative lookbehind | `(?<!\$)\d+` matches digits NOT after "$" |
+| Шаблон | Описание | Пример |
+| --- | --- | --- |
+| `^` | Начало строки/линии | `^Начало` соответствует строке "Начало работы..." |
+| `$` | Конец строки/линии | `день$` соответствует "добрый день" |
+| `\b` | Граница слова | `\bдень\b` соответствует "день", но не "полдень" |
+| `\B` | Не на границе слова | `\Bдень\B` соответствует "день" внутри "полденька" |
 
-## Flags/Modifiers
-| Flag | Description | Example |
-|------|-------------|---------|
-| `i` | Case insensitive | `/doomsday/i` matches "Doomsday", "DOOMSDAY" |
-| `g` | Global (find all matches) | `/doomsday/g` finds all "doomsday" occurrences |
-| `m` | Multiline (^ and $ match line breaks) | `/^doomsday/m` matches line "doomsdays" |
-| `s` | Dotall (. matches newlines) | `/dooms.day/s` matches "dooms\nday" |
+## Группы и чередование
+
+| Шаблон | Описание | Пример |
+| --- | --- | --- |
+| `(abc)` | Захватывающая группа | `(ха)+` соответствует "хахаха" |
+| `(?:abc)` | Незахватывающая группа | `(?:ха)+` соответствует без создания группы захвата |
+| `a|b` | Чередование (ИЛИ) | `да|нет` соответствует "да" или "нет" |
+| `\1` | Ссылка на группу 1 | `(.)\1` соответствует повторяющимся символам "аа" |
+
+## Спецсимволы (требуют экранирования)
+
+| Символ | Экранирование | Описание |
+| --- | --- | --- |
+| `.` | `\.` | Буквальная точка |
+| `*` | `\*` | Буквальная звездочка |
+| `+` | `\+` | Буквальный плюс |
+| `?` | `\?` | Буквальный знак вопроса |
+| `^` | `\^` | Буквальная карет (крышка) |
+| `$` | `\$` | Буквальный знак доллара |
+| `(` `)` | `\(` `\)` | Буквальные круглые скобки |
+| `[` `]` | `\[` `\]` | Буквальные квадратные скобки |
+| `{` `}` | `\{` `\}` | Буквальные фигурные скобки |
+| `|` | `|` | Буквальная вертикальная черта |
+| `\` | `\\` | Буквальный обратный слэш |
+
+## Проверки (Lookahead и Lookbehind)
+
+| Шаблон | Описание | Пример |
+| --- | --- | --- |
+| `(?=...)` | Положительная опережающая | `\d(?=px)` цифры ПЕРЕД "px" |
+| `(?!...)` | Отрицательная опережающая | `\d(?!px)` цифры НЕ перед "px" |
+| `(?<=...)` | Положительная ретроспективная | `(?<=\$)\d+` цифры ПОСЛЕ "$" |
+| `(?<!...)` | Отрицательная ретроспективная | `(?<!\$)\d+` цифры НЕ после "$" |
+
+## Флаги / Модификаторы
+
+| Флаг | Описание | Пример |
+| --- | --- | --- |
+| `i` | Регистронезависимость | `/день/i` соответствует "День", "ДЕНЬ" |
+| `g` | Глобальный поиск (все совпадения) | `/день/g` находит все вхождения "день" |
+| `m` | Многострочность (^ и $ работают для каждой строки) | `/^день/m` соответствует "день" в начале любой строки |
+| `s` | Dotall (точка `.` включает символы новой строки) | `/день.ночь/s` соответствует "день\nночь" |
 
 ---
 
-Maintained by [dutixlf](https://github.com/dutixlf)
+Поддерживается [dutixlf](https://github.com/dutixlf)
